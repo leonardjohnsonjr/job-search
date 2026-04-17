@@ -1,0 +1,14 @@
+// Job Seeker Prompt Generator - Configuration
+// All paths may be absolute or relative to this file.
+// CLI flags always override values set here.
+// Fields:
+//   excel          - Excel file with Company + Job_Description columns
+//   resume         - Your full resume as a plain .txt file
+//   resume_summary - Your 2-3 sentence professional summary as a .txt file
+//   out_dir        - Folder where generated prompt .md files are saved
+{
+  "excel": "jobs_data.xlsx",
+  "resume": "resume.txt",
+  "resume_summary": "resume_summary.txt",
+  "out_dir": "reports"
+}
