@@ -31,6 +31,7 @@ Options:
 Excel Schema (one row per job application):
   Column A - Company         Company name
   Column B - Job_Description Full job description text
+  Column C - Run             (Optional) 'Y', 'Yes', 'True', or blank to include this row. Any other value skips it.
 
 Examples:
   # First-time setup
@@ -70,7 +71,7 @@ CONFIG_HEADER = (
     "// CLI flags always override values set here.\n"
     "//\n"
     "// Fields:\n"
-    "//   excel          - Excel file with Company + Job_Description columns\n"
+    "//   excel          - Excel file with Company + Job_Description columns (optional Run column)\n"
     "//   resume         - Your full resume as a plain .txt file\n"
     "//   resume_summary - Your 2-3 sentence professional summary as a .txt file\n"
     "//   out_dir        - Folder where generated prompt .md files are saved\n"
@@ -296,6 +297,11 @@ def read_excel(path: str) -> list:
         company = row[col_map["Company"]]
         if not company:
             continue
+        # Check optional "Run" column
+        if "Run" in col_map:
+            run_val = str(row[col_map["Run"]] or "").strip().lower()
+            if run_val and run_val not in ("y", "yes", "true", "1"):
+                continue  # Skip this row
         rows.append({
             "row":             row_idx,
             "company":         str(company).strip(),

@@ -39,7 +39,7 @@ No API key required — just copy and paste the prompts into your preferred AI t
 ## Requirements
 
 - Python 3.10+
-- Excel file with Company and Job_Description columns
+- Excel file with Company and Job_Description columns (optional Run column)
 
 Install dependencies:
 
@@ -54,7 +54,7 @@ pip install openpyxl
 ### 1. Prepare your files
 
 Ensure you have:
-- `jobs_data.xlsx` — Excel file with Company and Job_Description columns
+- `jobs_data.xlsx` — Excel file with Company and Job_Description columns (optional Run column)
 - `resume.txt` — Your full resume as plain text
 - `resume_summary.txt` — Your 2-3 sentence professional summary
 
@@ -97,13 +97,15 @@ Open any generated `.md` file, copy a prompt from the code block, and paste it i
 
 Your `jobs_data.xlsx` should have these columns:
 
-| Company | Job_Description |
-|---|---|
-| Costco | Full job description text here... |
-| Amazon | Another job description... |
+| Company | Job_Description | Run |
+|---|---|---|
+| Costco | Full job description text here... | Y |
+| Amazon | Another job description... |  |
+| Google | Yet another... | Yes |
 
 - **Company**: The company name
 - **Job_Description**: The complete job posting text
+- **Run** (optional): Set to 'Y', 'Yes', 'True', or leave blank to include this row in processing. Any other value (like 'N', 'No', 'False') will skip the row.
 
 ---
 
